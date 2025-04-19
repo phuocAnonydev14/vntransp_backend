@@ -23,8 +23,8 @@ export class BlogService extends BaseService<BlogEntity> {
 			await this.imageUploadService.addImageUpload({
 				imageUrl: createBlogDto.imageUrl,
 				fileKey: createBlogDto.fileKey,
-				categoryId: blog.id,
-				blogId: null
+				categoryId: null,
+				blogId: blog.id
 			});
 		}
 		return blog;
@@ -43,8 +43,8 @@ export class BlogService extends BaseService<BlogEntity> {
 			await this.imageUploadService.addImageUpload({
 				imageUrl: updateBlogDto.imageUrl,
 				fileKey: updateBlogDto.fileKey,
-				categoryId: id,
-				blogId: null
+				categoryId: null,
+				blogId: id
 			});
 		}
 		return this.updateById(id, updateBlogDto);

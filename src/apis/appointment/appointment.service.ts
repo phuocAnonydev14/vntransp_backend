@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Queue } from 'bull';
-import { MoreThanOrEqual, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
 import { AppointmentEntity } from './entities/appointment.entity';
 
@@ -23,7 +23,11 @@ export class AppointmentService extends BaseService<AppointmentEntity> {
 	async createAppointment(
 		createAppointmentDto: CreateAppointmentDto
 	): Promise<AppointmentEntity> {
-		const appointment = await this.create(createAppointmentDto);
+		const { categoryId, ...params } = createAppointmentDto;
+		const appointment = await this.create({
+			...params,
+			category: { id: categoryId }
+		});
 		if (this.configService.get<boolean>('TRIGGER_MAIL')) {
 			// send new password to email
 			await this.sendMail.add(

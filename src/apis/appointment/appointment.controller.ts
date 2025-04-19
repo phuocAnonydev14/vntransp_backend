@@ -21,7 +21,7 @@ export class AppointmentController {
 	@Get()
 	@ApiGetAll(AppointmentEntity, 'Appointment')
 	findAll(@Query() query: PaginationDto) {
-		return this.appointmentService.getAllPaginated(query);
+		return this.appointmentService.getAllPaginated({ ...query, relations: ['category'] });
 	}
 
 	@Get(':id')

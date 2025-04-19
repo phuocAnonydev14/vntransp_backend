@@ -21,6 +21,10 @@ export class CreateAppointmentDto {
 	time: string;
 
 	@IsOptional()
+	@ApiProperty({ description: 'Time of appointment', example: '09:00' })
+	categoryId: number;
+
+	@IsOptional()
 	@ApiProperty({ description: 'Message of appointment', example: 'Message' })
 	message: string;
 }
