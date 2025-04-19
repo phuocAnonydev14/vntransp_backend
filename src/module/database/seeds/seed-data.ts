@@ -20,36 +20,31 @@ export const seedData = async (manager: EntityManager) => {
 		const categories = [
 			{
 				name: 'Vận tải đường bộ',
-				description:
-					'<p>Dịch vụ vận tải hàng hóa bằng đường bộ, bao gồm xe tải, xe container và các phương tiện chuyên dụng khác.</p><ul><li>Vận chuyển hàng hóa nội địa</li><li>Vận chuyển hàng hóa quốc tế (qua biên giới)</li><li>Dịch vụ giao nhận hàng tận nơi</li></ul>',
+				description: 'Dịch vụ vận tải hàng hóa bằng đường bộ',
 				content:
 					'<p>Dịch vụ vận tải hàng hóa bằng đường bộ, bao gồm xe tải, xe container và các phương tiện chuyên dụng khác.</p><ul><li>Vận chuyển hàng hóa nội địa</li><li>Vận chuyển hàng hóa quốc tế (qua biên giới)</li><li>Dịch vụ giao nhận hàng tận nơi</li></ul>'
 			},
 			{
 				name: 'Vận tải đường biển',
-				description:
-					'<p>Dịch vụ vận tải hàng hóa bằng đường biển, sử dụng tàu container, tàu hàng rời và các loại tàu biển khác.</p><ol><li>Vận chuyển hàng hóa xuất nhập khẩu</li><li>Vận chuyển hàng hóa giữa các cảng biển</li><li>Dịch vụ thuê tàu, thuê container</li></ol>',
+				description: 'Dịch vụ vận tải hàng hóa bằng đường biển',
 				content:
 					'<p>Dịch vụ vận tải hàng hóa bằng đường biển, sử dụng tàu container, tàu hàng rời và các loại tàu biển khác.</p><ol><li>Vận chuyển hàng hóa xuất nhập khẩu</li><li>Vận chuyển hàng hóa giữa các cảng biển</li><li>Dịch vụ thuê tàu, thuê container</li></ol>'
 			},
 			{
 				name: 'Vận tải hàng không',
-				description:
-					'<div><h3>Vận chuyển hàng hóa nhanh chóng</h3><p>Dịch vụ vận tải hàng hóa bằng đường hàng không, đảm bảo thời gian giao hàng nhanh nhất.</p><p>Các dịch vụ bao gồm:</p><ul><li>Vận chuyển hàng hóa khẩn cấp</li><li>Vận chuyển hàng hóa giá trị cao</li><li>Dịch vụ giao nhận hàng tại sân bay</li></ul></div>',
+				description: 'Dịch vụ vận tải hàng hóa bằng đường hàng không',
 				content:
 					'<div><h3>Vận chuyển hàng hóa nhanh chóng</h3><p>Dịch vụ vận tải hàng hóa bằng đường hàng không, đảm bảo thời gian giao hàng nhanh nhất.</p><p>Các dịch vụ bao gồm:</p><ul><li>Vận chuyển hàng hóa khẩn cấp</li><li>Vận chuyển hàng hóa giá trị cao</li><li>Dịch vụ giao nhận hàng tại sân bay</li></ul></div>'
 			},
 			{
 				name: 'Dịch vụ kho bãi',
-				description:
-					'<section><h4>Lưu trữ và quản lý hàng hóa</h4><p>Dịch vụ kho bãi chuyên nghiệp, đảm bảo an toàn và hiệu quả cho hàng hóa của bạn.</p><table border="1"><tr><th>Dịch vụ</th><th>Lợi ích</th></tr><tr><td>Lưu trữ hàng hóa</td><td>An toàn, bảo quản tốt</td></tr><tr><td>Quản lý tồn kho</td><td>Theo dõi chính xác, giảm thiểu sai sót</td></tr></table></section>',
+				description: '',
 				content:
 					'<section><h4>Lưu trữ và quản lý hàng hóa</h4><p>Dịch vụ kho bãi chuyên nghiệp, đảm bảo an toàn và hiệu quả cho hàng hóa của bạn.</p><table border="1"><tr><th>Dịch vụ</th><th>Lợi ích</th></tr><tr><td>Lưu trữ hàng hóa</td><td>An toàn, bảo quản tốt</td></tr><tr><td>Quản lý tồn kho</td><td>Theo dõi chính xác, giảm thiểu sai sót</td></tr></table></section>'
 			},
 			{
 				name: 'Tư vấn logistics',
-				description:
-					'<article><h2>Giải pháp logistics toàn diện</h2><p>Dịch vụ tư vấn logistics giúp tối ưu hóa chuỗi cung ứng và giảm chi phí vận chuyển.</p><blockquote>"Chuyên gia tư vấn logistics hàng đầu" - Đánh giá từ khách hàng</blockquote></article>',
+				description: '',
 				content:
 					'<article><h2>Giải pháp logistics toàn diện</h2><p>Dịch vụ tư vấn logistics giúp tối ưu hóa chuỗi cung ứng và giảm chi phí vận chuyển.</p><blockquote>"Chuyên gia tư vấn logistics hàng đầu" - Đánh giá từ khách hàng</blockquote></article>'
 			}
@@ -72,7 +67,6 @@ export const seedData = async (manager: EntityManager) => {
 		const userRepository = manager.getRepository(UserEntity);
 		const roleRepository = manager.getRepository(Role);
 		const userExist = await userRepository.find();
-		console.log('userExist.length', userExist.length);
 
 		if (userExist.length > 0) {
 			return;
