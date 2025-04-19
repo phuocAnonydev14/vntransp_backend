@@ -1,0 +1,42 @@
+@host = http://localhost:3000/v1
+@userId = 1
+@contentType = application/json
+@token = <your_token>
+
+
+# @name login
+POST {{host}}/auth/user/login
+content-type: {{contentType}}
+
+{
+  "username": "Login01",
+  "password": "Password01"
+}
+
+# @name create
+POST {{host}}/user
+content-type: {{contentType}}
+
+{
+  "username": "Login01",
+  "password": "Password01"
+}
+
+# @name read
+GET {{host}}/user
+content-type: {{contentType}}
+Authorization: Bearer {{token}}
+
+# @name update
+PUT {{host}}/user/{{userId}}
+content-type: {{contentType}}
+Authorization: Bearer {{token}}
+
+{
+  "name": "Updated Item",
+  "description": "Updated description"
+}
+
+# @name delete
+DELETE {{host}}/user/{{userId}}
+Authorization: Bearer {{token}}
