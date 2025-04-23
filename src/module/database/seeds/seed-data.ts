@@ -74,8 +74,8 @@ export const seedData = async (manager: EntityManager) => {
 		const users = [
 			{
 				username: 'admin',
-				email: 'admin@example.com',
-				password: 'string',
+				email: 'admin@vntransp.com',
+				password: 'admin@vntransp',
 				roleName: 'Admin'
 			},
 			{
