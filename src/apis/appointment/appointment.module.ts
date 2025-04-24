@@ -13,6 +13,7 @@ import { AppointmentEntity } from './entities/appointment.entity';
 		BullModule.registerQueue({ name: 'subscribe-mail' })
 	],
 	controllers: [AppointmentController],
-	providers: [AppointmentService]
+	providers: [AppointmentService],
+	exports: [AppointmentService]
 })
 export class AppointmentModule {}

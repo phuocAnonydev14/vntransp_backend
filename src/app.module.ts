@@ -10,6 +10,7 @@ import { SeedModule } from './module/database/seeds/seed.module';
 import { RateLimitModule } from './module/rateLimit/rateLimit.module';
 import { TaskScheduleModule } from './module/scheduling/schedule.module';
 import { JwtModule } from './module/jwt/jwt.module';
+import { MailModule } from './common/mail/email.module';
 @Module({
 	imports: [
 		ConfigModule,

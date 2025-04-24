@@ -11,7 +11,7 @@ export class SubscribeConsumer {
 		console.log('🚀 ~ EmailConsumer ~ newAppointment ~ job:', job.data);
 		const time1 = new Date().getTime();
 		await this.subscribeMailService.sendMailNewAppointment(
-			job.data['appointmentId'],
+			job.data['id'],
 			job.data['name'],
 			job.data['email'],
 			job.data['date'],

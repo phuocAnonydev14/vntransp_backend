@@ -14,8 +14,7 @@ export class AppointmentService extends BaseService<AppointmentEntity> {
 	constructor(
 		@InjectRepository(AppointmentEntity)
 		private readonly appointmentRepo: Repository<AppointmentEntity>,
-		@InjectQueue('subscribe-mail') private readonly sendMail: Queue,
-		private readonly configService: ConfigService
+		@InjectQueue('subscribe-mail') private readonly sendMail: Queue
 	) {
 		super(appointmentRepo);
 	}
@@ -26,16 +25,16 @@ export class AppointmentService extends BaseService<AppointmentEntity> {
 		const { categoryId, ...params } = createAppointmentDto;
 		const appointment = await this.create({
 			...params,
-			category: { id: categoryId }
+			category: { id: categoryId || 1 }
 		});
-		if (this.configService.get<boolean>('TRIGGER_MAIL')) {
-			// send new password to email
-			await this.sendMail.add(
-				'new-appointment',
-				{ appointmentId: appointment.id, ...createAppointmentDto },
-				{ removeOnComplete: true }
-			);
-		}
+		// if (this.configService.get<boolean>('TRIGGER_MAIL')) {
+		// send new password to email
+		await this.sendMail.add(
+			'new-appointment',
+			{ appointmentId: appointment.id, ...createAppointmentDto },
+			{ removeOnComplete: true }
+		);
+		// }
 		return appointment;
 	}
 }

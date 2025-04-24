@@ -16,6 +16,6 @@ export class AppointmentEntity extends BaseEntity {
 	@Column({ nullable: true })
 	message: string;
 
-	@ManyToOne(() => Category, (category) => category.appointments, { eager: true })
+	@ManyToOne(() => Category, (category) => category.appointments, { eager: true, nullable: true })
 	category: Category;
 }
