@@ -14,14 +14,12 @@ export class SubscribeMailService {
 		appointmentId: number,
 		name: string,
 		email: string,
-		date: Date,
-		time: string,
-		location: string,
-		message: string
+		message: string,
+		phone: string,
 	) {
 		try {
 			await this.mailerService.sendMail({
-				from: 'TieMen New Appointment',
+				from: 'Vntransp New Appointment',
 				to: process.env.MAIL_USER,
 				subject: `New Appointment Alert: Appointment #${appointmentId} Booked by ${name}`,
 				template: './newAppointment',
@@ -29,16 +27,14 @@ export class SubscribeMailService {
 					appointmentId,
 					name,
 					email,
-					date,
-					time,
-					location,
-					message
+					message,
+					phone
 				}
 			});
 		} catch (error) {
 			logger.writeWithParameter(
 				MsgIds.E001010,
-				{ appointmentId, name, email, date, time, location, message },
+				{ appointmentId, name, email, message },
 				error
 			);
 		}
@@ -47,9 +43,9 @@ export class SubscribeMailService {
 	async sendMailNewSubscription(email: string) {
 		try {
 			await this.mailerService.sendMail({
-				from: 'TieMen News',
+				from: 'Vntransp News',
 				to: email,
-				subject: `Thank you for subscribing to TieMen Newsletter`,
+				subject: `Thank you for subscribing to Vntransp Newsletter`,
 				template: './newSubscription',
 				context: {
 					email

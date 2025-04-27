@@ -14,10 +14,8 @@ export class SubscribeConsumer {
 			job.data['id'],
 			job.data['name'],
 			job.data['email'],
-			job.data['date'],
-			job.data['time'],
-			job.data['location'],
-			job.data['message']
+			job.data['message'],
+			job.data['phone'],
 		);
 		const time2 = new Date().getTime();
 		console.log('🚀 ~ EmailConsumer ~ newAppointment ~ time', time2 - time1);

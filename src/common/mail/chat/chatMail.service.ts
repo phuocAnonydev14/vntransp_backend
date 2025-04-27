@@ -30,7 +30,7 @@ export class ChatMailService {
 	async sendMailUnansweredMessage(name: string, message: string) {
 		try {
 			await this.mailerService.sendMail({
-				from: 'TieMen Customer Support',
+				from: 'Vntransp Customer Support',
 				to: this.configService.get<string>('MAIL_USER'),
 				subject: `${name} send message to you`,
 				template: './unansweredMessage',
