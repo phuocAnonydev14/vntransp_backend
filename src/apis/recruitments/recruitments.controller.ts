@@ -1,6 +1,12 @@
 import { PaginationDto } from '@/common/base/base.dto';
-import { ApiController, ApiCreate, ApiGetAll, ApiGetOne } from '@/common/base/base.swagger';
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import {
+	ApiController,
+	ApiCreate,
+	ApiDelete,
+	ApiGetAll,
+	ApiGetOne
+} from '@/common/base/base.swagger';
+import { Body, Controller, Delete, Get, Param, Post, Query } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { RecruitmentEntity } from './recruitment.entity';
 import { RecruitmentService } from './recruitments.service';
@@ -28,5 +34,11 @@ export class RecruitmentController {
 	@ApiGetOne(RecruitmentEntity, 'Recruitment')
 	findOne(@Param('id') id: string) {
 		return this.recruitmentService.getOneByIdOrFail(Number(id));
+	}
+
+	@Delete(':id')
+	@ApiDelete(RecruitmentEntity, 'Recruitment')
+	remove(@Param('id') id: string) {
+		return this.recruitmentService.removeById(Number(id));
 	}
 }
